@@ -1,7 +1,3 @@
-#include <iostream>
-#include <string>
-using namespace std;
-
 /**
  * A Object holding the price, author, and title of a book
  * 
@@ -59,6 +55,8 @@ Book::Book (string _author, string _title, double _price){
 
 /**
 * Returns the author of the book
+*
+* @return the author of the book
 */
 string Book::getAuthor() {
 	return author;
@@ -75,6 +73,8 @@ string Book::getTitle() {
 
 /**
 * Returns the price of the book as a double
+*
+* @return the price of the book
 */
 double Book::getPrice() {
 	return price;
@@ -87,27 +87,9 @@ double Book::getPrice() {
 * @return true if it is successful in modifying the price, false otherwise.
 */
 bool Book::increasePrice(double increase) {
-	//Can put in a section here to ensure success of increase.
-	//Going to assume success in adding the increase to the price.
-
+	if (increase < 0) {	// this is a decrease, not an increase
+		return false;
+	}
 	price = price + increase;
 	return true;
-}
-
-int main() {
-    Book bookOne = Book("Terry Pratchett", "Guards! Guards!", 5.99);
-    Book bookTwo = Book("Robert Jordan", "The Eye of the World", 8.99);
-
-    cout << bookOne.getAuthor() << endl;
-    cout << bookOne.getPrice() << endl;
-    cout << bookOne.getTitle() << endl;
-    bookOne.increasePrice(1.00);
-    cout << bookOne.getPrice() << endl;
-
-    cout << bookTwo.getAuthor() << endl;
-    cout << bookTwo.getPrice() << endl;
-    cout << bookTwo.getTitle() << endl;
-    bookTwo.increasePrice(-6.00);
-    cout << bookTwo.getPrice() << endl;
-
 }

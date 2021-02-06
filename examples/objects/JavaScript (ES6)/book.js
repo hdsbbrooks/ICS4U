@@ -21,28 +21,28 @@ class Book {
   }
 
   /**
-	* Returns the author of the book
-	*
-	* @returns {string}
-	*/
+   * Returns the author of the book
+   *
+   * @returns {string} - the author of the book
+   */
   getAuthor () {
     return this.author;
   }
 
   /**
-	* Returns the title of the book
-	*
-	* @returns {string}
-	*/
+   * Returns the title of the book
+   *
+   * @returns {string} - the title of the book
+   */
   getTitle () {
     return this.title;
   }
 
   /**
-	* Returns the price of the book
-	*
-	* @returns {number}
-	*/
+   * Returns the price of the book
+   *
+   * @returns {number} - the price of the book
+   */
   getPrice () {
     return this.price;
   }
@@ -53,30 +53,16 @@ class Book {
    * This has been updated to use ES6 script
    *  
    * @param {number} value - This is the value to increase the price by.
+   * @returns {bool} - true if this succeeded, false if the value would decrease
    */
   increasePrice (value) {
+    if (value < 0) {
+      return false
+    }
     this.price = this.price + value;
+    return true;
   }
-
 }
 
-/**
- * Function used to test the creation of objects
- */
-function testing(){
-    var bookOne = new Book("Terry Pratchett", "Guards! Guards!", 5.99);
-    var bookTwo = new Book("Robert Jordan", "The Eye of the World", 8.99);
-    console.log(bookOne.getAuthor());
-    console.log(bookOne.getPrice());
-    console.log(bookOne.getTitle());
-    bookOne.increasePrice(1.00);
-    console.log(bookOne.getPrice());
-
-    console.log(bookTwo.getAuthor());
-    console.log(bookTwo.getPrice());
-    console.log(bookTwo.getTitle());
-    bookTwo.increasePrice(-6.00);
-    console.log(bookTwo.getPrice());
-}
-
-testing();
+// export the book class
+module.exports = Book;
